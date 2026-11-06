@@ -41,7 +41,6 @@ def extract_video_info(url: str, max_comments: int = 30):
         raw_comments = info.get('comments', [])
         comments = []
         if raw_comments:
-            # 좋아요 순 또는 상위 댓글 수집
             for c in raw_comments[:max_comments]:
                 text = c.get('text', '').strip()
                 if text:
@@ -81,7 +80,7 @@ def analyze_keywords_with_gemini(api_key: str, title: str, description: str, com
 """
 
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-3.8-flash",
         contents=prompt
     )
     return response.text
